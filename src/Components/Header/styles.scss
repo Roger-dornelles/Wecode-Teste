@@ -1,0 +1,26 @@
+.header,
+.headerScroll {
+    width: 60vw;
+    height: 55px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px 16px;
+    z-index: 999;
+}
+
+.headerScroll {
+    background-color: #3e3e3e;
+}
+
+.navigation {
+    display: flex;
+
+    li {
+        list-style: none;
+        margin: 0 16px;
+        cursor: pointer;
+    }
+}

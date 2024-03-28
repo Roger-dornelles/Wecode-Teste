@@ -1,0 +1,124 @@
+.modal-open {
+    width: 331px;
+    height: 799px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: moveModalOpen 2s ease;
+    -webkit-animation: moveModalOpen 2s ease;
+    background-color: #ffffff;
+}
+
+@keyframes moveModalOpen {
+    from {
+        display: none;
+        transform: translateX(-85px);
+        -webkit-transform: translateX(-85px);
+        -moz-transform: translateX(-85px);
+        -ms-transform: translateX(-85px);
+        -o-transform: translateX(-85px);
+        opacity: 0;
+    }
+    to {
+        display: flex;
+        transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        -o-transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    width: 331px;
+    height: 799px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    display: none;
+    animation: moveModalClose 2s ease-out;
+    -webkit-animation: moveModalClose 2s ease-out;
+}
+
+@keyframes moveModalClose {
+    from {
+        display: flex;
+        opacity: 1;
+        transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        -o-transform: translateX(0px);
+    }
+    to {
+        opacity: 0;
+        display: none;
+        transform: translateX(-80px);
+        -webkit-transform: translateX(-80px);
+        -moz-transform: translateX(-80px);
+        -ms-transform: translateX(-80px);
+        -o-transform: translateX(-80px);
+    }
+}
+
+.modal-header {
+    display: flex;
+
+    height: 56px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 16px;
+}
+
+.logo-modal {
+    width: 50%;
+}
+
+.close-modal {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.banner-modal {
+    width: 100%;
+}
+
+.description {
+    color: #1d1d1b;
+    height: 100px;
+    padding: 16px;
+}
+
+.shoes-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+.shoes-menu-red {
+    color: #b11b26;
+}
+
+.arrow {
+    transform: rotate(-85deg);
+    -webkit-transform: rotate(-85deg);
+    -moz-transform: rotate(-85deg);
+    -ms-transform: rotate(-85deg);
+    -o-transform: rotate(-85deg);
+}
+
+.shoes {
+    li {
+        list-style: none;
+        font-size: 14px;
+        padding: 3px 0 3px 12px;
+        cursor: pointer;
+    }
+}

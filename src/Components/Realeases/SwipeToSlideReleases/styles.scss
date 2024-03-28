@@ -1,0 +1,42 @@
+.releases-container {
+    width: 80%;
+}
+
+.releases-container-image {
+    display: flex;
+    // background-color: "#F7F7F7";
+    background-color: rgb(247, 247, 247);
+}
+
+.releases-icon-favorite,
+.releases-icon-add {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.releases-icon-favorite {
+    position: relative;
+    right: 5px;
+    top: 30px;
+}
+
+.releases-icon-add {
+    position: relative;
+    bottom: 30px;
+    right: 5px;
+}
+
+.releases-container-price {
+    display: flex;
+}
+
+.releases-delete {
+    color: '#8A8A8A';
+    font-weight: 300;
+    margin-right: 12px;
+    margin-top: 12px;
+}
+
+.releases-description {
+    margin-top: 12px;
+}
