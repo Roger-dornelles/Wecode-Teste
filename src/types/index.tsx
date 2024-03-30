@@ -33,4 +33,6 @@ export interface ReleaseType {
 export interface BlogType {
     id: number
     image: string
+    title: string
+    description: string
 }

@@ -29,30 +29,38 @@ const SimplesSlide = ({ blogInfo }: SlideBlogProps) => {
             | undefined,
     ) => {
         return (
-            <div>
-                <div className='slide-dotes'>
-                    <ul className='dots'> {dots} </ul>
-                </div>
+            <div className='blog-slide-dotes'>
+                <ul className='blog-dots blog-slick-dots'> {dots} </ul>
             </div>
         )
     }
 
-    const CustomSlide = (props: { image: string }) => {
-        const { image, ...otherProps } = props
+    const CustomSlide = (props: { image: string; title: string; description: string }) => {
+        const { image, title, description, ...otherProps } = props
 
         return (
             <div {...otherProps}>
                 <img src={`${image}`} alt='imagem do slide' className='imagem' />
+                <p className='blog-title'>{title}</p>
+                <p className='blog-description'>{description}</p>
+                <button className='blog-slide-button'>Saiba mais!</button>
             </div>
         )
     }
 
     return (
-        <div className='slider-container'>
+        <div className='blog-slider-container'>
             <Slider {...settings} appendDots={appendDots}>
                 {blogInfo &&
                     blogInfo.map((product) => {
-                        return <CustomSlide image={product.image} key={product.id} />
+                        return (
+                            <CustomSlide
+                                image={product.image}
+                                key={product.id}
+                                title={product.title}
+                                description={product.description}
+                            />
+                        )
                     })}
             </Slider>
         </div>

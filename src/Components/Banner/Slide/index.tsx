@@ -15,28 +15,19 @@ function SimpleSlider({ products }: PropsSlide) {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
-        speed: 7000,
-        autoplaySpeed: 5000,
-        cssEase: 'linear',
+        // autoplay: true,
+        speed: 1000,
+        // autoplaySpeed: 500,
+        // cssEase: 'linear',
     }
 
-    const appendDots = (
-        dots:
-            | string
-            | number
-            | boolean
-            | React.ReactElement<unknown, string | React.JSXElementConstructor<unknown>>
-            | Iterable<React.ReactNode>
-            | React.ReactPortal
-            | null
-            | undefined,
-    ) => {
+    const appendDots = (dots) => {
         return (
             <div>
-                <div className='slide-dotes'>
+                <div className='banner-slide-dotes'>
                     <button className='slide-dotes-description'>Conheça agora!</button>
-                    <ul className='dots'> {dots} </ul>
+
+                    <ul className='banner-dots'> {dots} </ul>
                 </div>
             </div>
         )
@@ -47,13 +38,18 @@ function SimpleSlider({ products }: PropsSlide) {
 
         return (
             <div {...otherProps}>
-                <img src={`${image}`} alt='imagem do slide' className='imagem' />
+                <img
+                    src={`${image}`}
+                    alt='imagem do slide'
+                    className='banner-imagem'
+                    style={{ objectFit: 'fill' }}
+                />
             </div>
         )
     }
 
     return (
-        <div className='slider-container'>
+        <div className='banner-slider-container'>
             <Slider {...settings} appendDots={appendDots}>
                 {products &&
                     products.map((product) => {

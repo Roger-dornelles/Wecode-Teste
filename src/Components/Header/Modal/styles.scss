@@ -84,6 +84,7 @@
     width: 50%;
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 .banner-modal {
@@ -99,7 +100,12 @@
 .shoes-menu {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.shoes-title {
+    cursor: pointer;
 }
 
 .shoes-menu-red {
@@ -115,10 +121,19 @@
 }
 
 .shoes {
-    li {
-        list-style: none;
-        font-size: 14px;
-        padding: 3px 0 3px 12px;
-        cursor: pointer;
-    }
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+.shoes li {
+    width: 30%;
+    list-style: none;
+    font-size: 14px;
+    padding: 3px 0px 3px 12px;
+    margin: 2px 0;
+    cursor: pointer;
+}
+
+.shoes li:hover {
+    color: #b11b26;
 }

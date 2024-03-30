@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react'
 import Slider from 'react-slick'
 import './styles.scss'
@@ -16,16 +17,38 @@ interface Props {
 
 function SwipeToSlideReleases({ releases }: Props) {
     const settings = {
+        dots: true,
         className: 'center',
         infinite: true,
         centerPadding: '60px',
         slidesToShow: 2,
+        slidesToScroll: 1,
         swipeToSlide: true,
+        speed: 300,
+
+        appendDots: (dots) => (
+            <div>
+                <ul style={{ margin: '-18px 0px' }}> {dots} </ul>
+            </div>
+        ),
+        responsive: [
+            {
+                breakpoint: 620,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+        ],
     }
 
-    const { setAddProductCart, addProductCart }: any = useContext(AddCartContext)
-    const { addFavorite, setAddFavorite }: any = useContext(AddFavoriteContext)
+    const { setAddProductCart, addProductCart } = useContext(AddCartContext)
+    const { addFavorite, setAddFavorite } = useContext(AddFavoriteContext)
     const [favorite, setFavorite] = useState({ id: 0, favorite: false })
+
+    const productAdded = { id: 0, productAdded: false }
 
     const handleAddCart = (release: ReleaseType) => {
         const itemExists = addProductCart?.some((cartItem: { id: number }) => cartItem.id === release.id)
@@ -44,6 +67,8 @@ function SwipeToSlideReleases({ releases }: Props) {
                     quantity: 1,
                 },
             ])
+            productAdded.id = release.id
+            productAdded.productAdded = true
         } else {
             setAddProductCart(
                 addProductCart.filter((item: { id: number; quantity: number }) => {
@@ -86,41 +111,73 @@ function SwipeToSlideReleases({ releases }: Props) {
 
     const CustomRelease = (props: { release: ReleaseType }) => {
         const { release, ...otherProps } = props
+        const icon = { active: false, icon: <IconFavorito /> }
 
+        addFavorite.map((item) => {
+            if (item.id === release.id) {
+                icon.active = true
+                icon.icon = <IconFavoriteBlack />
+                return
+            }
+        })
+
+        const differenceInValues = release.price.isDiscount && release.price.amount - release.price.isDiscount
+        const divisionOfValues = differenceInValues && differenceInValues / release.price.amount
+
+        const percentage = divisionOfValues && divisionOfValues * 100
+
+        const IsDiscount = {
+            isDiscount: false,
+            value: '',
+        }
+        if (percentage) {
+            IsDiscount.isDiscount = true
+            IsDiscount.value = percentage?.toPrecision(2)
+        }
         return (
             <div {...otherProps}>
-                <div className='releases-container'>
+                <div className='releases-slide-container'>
                     <div className='releases-icon-favorite' onClick={() => handleAddFavorite(release)}>
-                        {addFavorite.map((item: { id: number }) => {
-                            if (item.id === release.id) {
-                                return <IconFavoriteBlack key={item.id} />
-                            }
-                            return <IconFavorito key={item.id} />
-                        })}
-                        <IconFavorito />
+                        {icon.active ? (
+                            <p className='shoes-icon'>{icon.icon}</p>
+                        ) : (
+                            <p className='shoes-icon'>
+                                <IconFavorito />
+                            </p>
+                        )}
                     </div>
+
                     <div className='releases-container-image'>
                         <img src={release.image} alt={`imagem categoria ${release.image}`} />
+                        <div className='release-discount'>
+                            {`${IsDiscount.isDiscount ? `${IsDiscount.value}% OFF` : ''}`}
+                        </div>
                     </div>
-                    <div className='releases-icon-add' onClick={() => handleAddCart(release)}>
-                        <IconAdicionar />
+
+                    <div className='releases-icon-add ' onClick={() => handleAddCart(release)}>
+                        <p className='shoes-icon'>
+                            <IconAdicionar />
+                        </p>
                     </div>
                 </div>
-                <p>{release.name}</p>
-                {release.price.isDiscount ? (
-                    <div className='releases-container-price'>
-                        <del className='releases-delete'>R$ {release.price.amount.toFixed(2)}</del>
-                        <p className='releases-description'>R$ {release.price.isDiscount.toFixed(2)}</p>
-                    </div>
-                ) : (
-                    <p className='releases-description'>R$ {release.price.amount.toFixed(2)}</p>
-                )}
+                <div className='releases-information'>
+                    <p className='releases-paragraph'>{release.name}</p>
+
+                    {release.price.isDiscount ? (
+                        <div className='releases-container-price'>
+                            <del className='releases-delete'>R$ {release.price.amount.toFixed(2)}</del>
+                            <p className='releases-description'>R$ {release.price.isDiscount.toFixed(2)}</p>
+                        </div>
+                    ) : (
+                        <p className='releases-description-amount'>R$ {release.price.amount.toFixed(2)}</p>
+                    )}
+                </div>
             </div>
         )
     }
 
     return (
-        <div className='slider-container'>
+        <div className='releases-slider-container'>
             <Slider {...settings}>
                 {releases &&
                     releases.map((item) => {

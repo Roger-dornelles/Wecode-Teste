@@ -1,11 +1,33 @@
 .categories-container {
     display: flex;
+    width: 50%;
     flex-direction: column;
     padding: 32px 16px 48px 16px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+}
+
+.categories-container-title {
+    // margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+
+    @media (max-width: 768px) {
+        width: 90%;
+    }
 }
 
 .categories-title {
     font-size: 16px;
     color: '#1D1D1D';
     padding-bottom: 15px;
+}
+
+.slide {
+    display: flex;
+    justify-content: flex-start;
 }

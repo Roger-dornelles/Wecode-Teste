@@ -1,18 +1,26 @@
 .header,
 .headerScroll {
-    width: 60vw;
+    width: 50%;
     height: 55px;
     position: fixed;
+    top: 0;
+    left: 25%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
     padding: 10px 16px;
-    z-index: 999;
+    z-index: 99;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        width: 80%;
+        left: 10%;
+    }
 }
 
 .headerScroll {
-    background-color: #3e3e3e;
+    background-color: #ffffff;
 }
 
 .navigation {
@@ -20,7 +28,16 @@
 
     li {
         list-style: none;
-        margin: 0 16px;
+        margin: 0 1rem;
+        cursor: pointer;
+    }
+}
+
+.navigation-scroll {
+    display: flex;
+    li {
+        list-style: none;
+        margin: 0 1rem;
         cursor: pointer;
     }
 }

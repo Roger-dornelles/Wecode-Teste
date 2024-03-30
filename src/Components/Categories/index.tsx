@@ -10,9 +10,12 @@ interface CategoriesProps {
 const Index = ({ categories }: CategoriesProps) => {
     return (
         <div className='categories-container'>
-            <p className='categories-title'>Categorias</p>
-
-            <SwipeToSlide categories={categories} />
+            <div className='categories-container-title'>
+                <p className='categories-title'>Categorias</p>
+            </div>
+            <div className='slide'>
+                <SwipeToSlide categories={categories} />
+            </div>
         </div>
     )
 }

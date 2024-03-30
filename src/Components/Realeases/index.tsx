@@ -11,7 +11,7 @@ interface ReleasesProps {
 const Index = ({ releases }: ReleasesProps) => {
     return (
         <div className='releases-container'>
-            <p>Lançamentos</p>
+            <p className='release-paragraph'>Lançamentos</p>
             <SwipeToSlideReleases releases={releases} />
         </div>
     )

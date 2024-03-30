@@ -4,17 +4,52 @@
     background-size: cover;
 }
 
-.slide-dotes {
-    display: flex;
-    justify-content: space-between;
+.blog-title {
+    color: #1d1d1d;
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 15px;
 }
 
-.dots {
+.blog-descrition {
+    font-weight: 300;
+    color: #8a8a8a;
+    line-height: 16px;
+    font-size: 12px;
+    padding-top: 15px;
+}
+
+.blog-slide-button {
+    border: none;
+    background-color: transparent;
+    color: #1d1d1d;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 300;
+}
+
+.blog-slide-container {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+}
+
+// .slide-dotes {
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+.blog-dots {
     position: absolute;
-    right: 50px;
-    bottom: 50px;
+    right: 0px;
+    bottom: 0px;
     display: flex;
     flex-direction: row;
+}
+
+.blog-slide-dotes {
+    display: block;
 }
 
 .slick-dots li.slick-active button:before {

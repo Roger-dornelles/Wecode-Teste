@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 
-import '../styles.scss'
+import './styles.scss'
 import { CategoriesType } from '../../../types'
 
 interface CategoriesProps {
@@ -21,13 +21,57 @@ function SwipeToSlide({ categories }: CategoriesProps) {
         centerPadding: '60px',
         slidesToShow: 4,
         swipeToSlide: true,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1150,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 890,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 780,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2,
+                },
+            },
+            {
+                breakpoint: 500,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2,
+                },
+            },
+        ],
     }
 
-    const CustomSlide = (props: { [x: string]: unknown; categories: CategorieType }) => {
+    const CustomSlide = (props: { categories: CategorieType }) => {
         const { categories, ...otherProps } = props
 
         return (
-            <div {...otherProps}>
+            <div {...otherProps} style={{ padding: 10 }}>
                 <img src={categories.image} alt={`imagem categoria ${categories.categorie}`} />
                 <p>{categories.categorie}</p>
             </div>
@@ -35,7 +79,7 @@ function SwipeToSlide({ categories }: CategoriesProps) {
     }
 
     return (
-        <div className='slider-container'>
+        <div className='categories-slider-container'>
             <Slider {...settings}>
                 {categories &&
                     categories.map((categorie) => {

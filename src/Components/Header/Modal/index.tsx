@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import IconClose from '../../../Icons/Close'
-import BannerModal from '../../../images/Banner-modal.png'
+// import BannerModal from '../../../images/Banner-modal.png'
 import LogoBlack from '../../../Icons/Logo_preto'
 import Arrow from '../../../Icons/Arrow'
 import './styles.scss'
@@ -38,7 +38,7 @@ const Modal = ({ openModal, bannerModal }: ModalProps) => {
 
             <nav className='description'>
                 <div onClick={() => setShoes(!shoes)} className='shoes-menu'>
-                    <p>Sapatos</p>
+                    <p className='shoes-title'>Sapatos</p>
                     <p className={!shoes ? 'arrow' : ''}>
                         <Arrow />
                     </p>

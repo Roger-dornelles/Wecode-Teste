@@ -6,6 +6,7 @@ import Categories from './Components/Categories'
 import BannerNavigation from './Components/BannerNavigation'
 import Releases from './Components/Realeases'
 import Blog from './Components/Blog'
+import Footer from './Components/Footer'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -21,7 +22,7 @@ import {
 import { BannersType, ProductType, CategoriesType, ReleaseType, BlogType, BannerModalType } from './types'
 
 function App() {
-    const [windowHeight, setWindowHeight] = useState(0)
+    const [windowHeight, setWindowHeight] = useState(false)
     const [bannerModal, setBannerModal] = useState<BannerModalType[]>([])
     const [bannerPrincipal, setBannerPrincipal] = useState<ProductType[]>([])
     const [categories, setCategories] = useState<CategoriesType[]>([])
@@ -74,12 +75,17 @@ function App() {
     }
 
     const handleScroll = () => {
-        setWindowHeight(window.scrollY)
+        if (window.scrollY !== 0) {
+            setWindowHeight(true)
+        } else {
+            setWindowHeight(false)
+        }
     }
-
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
+    }, [])
 
+    useEffect(() => {
         handleProductsBannerPrincipal()
         handleGetBannerModal()
         handleGetCategories()
@@ -96,6 +102,7 @@ function App() {
             <BannerNavigation banners={bannerNavigation} />
             <Releases releases={releases} />
             <Blog blogInfo={blogInfo} />
+            <Footer />
         </div>
     )
 }
