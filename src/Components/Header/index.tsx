@@ -60,11 +60,11 @@ const Header = ({ windowHeight, bannerModal }: HeaderProps) => {
 
                     <li>
                         {positionScroll ? (
-                            <div onClick={handleButtonCart}>
+                            <div data-cy="cart-black" onClick={handleButtonCart}>
                                 <IconCarrinhoBlack quantityProduct={addProductCart} />
                             </div>
                         ) : (
-                            <div onClick={handleButtonCart}>
+                            <div data-cy="cart-white"  onClick={handleButtonCart}>
                                 <IconCarrinho quantityProduct={addProductCart} />
                             </div>
                         )}

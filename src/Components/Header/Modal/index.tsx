@@ -43,7 +43,7 @@ const Modal = ({ openModal, bannerModal }: ModalProps) => {
             </div>
 
             <nav className='description'>
-                <div onClick={() => setShoes(!shoes)} className='shoes-menu'>
+                <div onClick={() => setShoes(!shoes)} className='shoes-menu' data-cy='shoes-menu'>
                     <p className='shoes-title'>Sapatos</p>
                     <p className={!shoes ? 'arrow' : ''}>
                         <Arrow />
@@ -53,7 +53,7 @@ const Modal = ({ openModal, bannerModal }: ModalProps) => {
                     <ul className='shoes'>
                         <li>Scarpins</li>
                         <li>Mocassim</li>
-                        <li>Sapatilhas</li>
+                        <li data-cy='sapatilhas'>Sapatilhas</li>
                         <li>Mules</li>
                         <li>Peer Tope</li>
                         <li>Oxford</li>
