@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
 import IconClose from '../../../Icons/Close'
-// import BannerModal from '../../../images/Banner-modal.png'
 import LogoBlack from '../../../Icons/Logo_preto'
 import Arrow from '../../../Icons/Arrow'
 import './styles.scss'
 import { BannerModalType } from '../../../types'
+import { useNavigate } from 'react-router-dom'
 
 interface ModalProps {
     openModal: boolean
@@ -16,9 +16,15 @@ const Modal = ({ openModal, bannerModal }: ModalProps) => {
     const [openMenu, setOpenMenu] = useState(false)
     const [shoes, setShoes] = useState(false)
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         setOpenMenu(openModal)
     }, [openModal])
+
+    const handleMyFavorites = () => {
+        navigate('/Favoritos')
+    }
 
     return (
         <div className={openMenu ? 'modal-open' : 'modal-close'}>
@@ -77,6 +83,10 @@ const Modal = ({ openModal, bannerModal }: ModalProps) => {
 
                 <div className='shoes-menu shoes-menu-red'>
                     <p>Outlet</p>
+                </div>
+
+                <div className='my-favorites' onClick={handleMyFavorites}>
+                    <p>Meus Favoritos</p>
                 </div>
             </nav>
         </div>

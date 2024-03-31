@@ -13,9 +13,10 @@ import { ReleaseType } from '../../../types'
 
 interface Props {
     releases: ReleaseType[]
+    handleOpenWarning: (value: boolean) => void
 }
 
-function SwipeToSlideReleases({ releases }: Props) {
+function SwipeToSlideReleases({ releases, handleOpenWarning }: Props) {
     const settings = {
         dots: true,
         className: 'center',
@@ -46,11 +47,12 @@ function SwipeToSlideReleases({ releases }: Props) {
 
     const { setAddProductCart, addProductCart } = useContext(AddCartContext)
     const { addFavorite, setAddFavorite } = useContext(AddFavoriteContext)
-    const [favorite, setFavorite] = useState({ id: 0, favorite: false })
+    const [, setFavorite] = useState({ id: 0, favorite: false })
 
     const productAdded = { id: 0, productAdded: false }
 
     const handleAddCart = (release: ReleaseType) => {
+        handleOpenWarning(true)
         const itemExists = addProductCart?.some((cartItem: { id: number }) => cartItem.id === release.id)
 
         if (!itemExists) {

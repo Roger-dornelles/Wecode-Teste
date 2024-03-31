@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './styles.scss'
 
 import SwipeToSlideReleases from './SwipeToSlideReleases'
@@ -9,10 +9,22 @@ interface ReleasesProps {
 }
 
 const Index = ({ releases }: ReleasesProps) => {
+    const [openWarningAdd, setWarningAdd] = useState<boolean>(false)
+
+    const handleOpenWarning = (value) => {
+        if (value) {
+            setWarningAdd(value)
+        }
+
+        setTimeout(() => {
+            setWarningAdd(false)
+        }, 2500)
+    }
     return (
         <div className='releases-container'>
             <p className='release-paragraph'>Lançamentos</p>
-            <SwipeToSlideReleases releases={releases} />
+            <SwipeToSlideReleases releases={releases} handleOpenWarning={handleOpenWarning} />
+            {openWarningAdd && <div className='release-warning'>Adicionado ao carrinho</div>}
         </div>
     )
 }

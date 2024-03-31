@@ -15,6 +15,7 @@ import IconSearchBlack from '../../Icons/IconSearchBlack'
 import Modal from './Modal'
 import { AddCartContext } from '../../context/AddCartContext'
 import { BannerModalType } from '../../types'
+import { useNavigate } from 'react-router-dom'
 
 interface HeaderProps {
     windowHeight: boolean
@@ -26,6 +27,12 @@ const Header = ({ windowHeight, bannerModal }: HeaderProps) => {
     const [openMenu, setOpenMenu] = useState(false)
 
     const { addProductCart } = useContext(AddCartContext)
+
+    const navegate = useNavigate()
+
+    const handleButtonCart = () => {
+        navegate('/Compras')
+    }
 
     const handleOpenMenu = () => {
         setOpenMenu(!openMenu)
@@ -53,9 +60,13 @@ const Header = ({ windowHeight, bannerModal }: HeaderProps) => {
 
                     <li>
                         {positionScroll ? (
-                            <IconCarrinhoBlack quantityProduct={addProductCart} />
+                            <div onClick={handleButtonCart}>
+                                <IconCarrinhoBlack quantityProduct={addProductCart} />
+                            </div>
                         ) : (
-                            <IconCarrinho quantityProduct={addProductCart} />
+                            <div onClick={handleButtonCart}>
+                                <IconCarrinho quantityProduct={addProductCart} />
+                            </div>
                         )}
                     </li>
                 </ul>

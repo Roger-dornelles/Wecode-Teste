@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { ReactNode, SetStateAction, createContext, useState } from 'react'
+import { ReactNode, createContext, useState } from 'react'
 
 interface InitialValueType {
     id: number

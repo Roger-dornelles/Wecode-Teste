@@ -137,3 +137,13 @@
 .shoes li:hover {
     color: #b11b26;
 }
+
+.my-favorites {
+    display: flex;
+    margin-top: 2.5rem;
+    cursor: pointer;
+}
+
+.my-favorites:hover {
+    color: #b11b26;
+}
