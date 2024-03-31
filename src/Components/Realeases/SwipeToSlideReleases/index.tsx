@@ -156,7 +156,7 @@ function SwipeToSlideReleases({ releases, handleOpenWarning }: Props) {
                         </div>
                     </div>
 
-                    <div className='releases-icon-add ' onClick={() => handleAddCart(release)}>
+                    <div className='releases-icon-add' onClick={() => handleAddCart(release)}>
                         <p className='shoes-icon'>
                             <IconAdicionar />
                         </p>

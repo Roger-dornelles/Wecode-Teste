@@ -22,6 +22,7 @@ function SwipeToSlide({ categories }: CategoriesProps) {
         slidesToShow: 4,
         swipeToSlide: true,
         slidesToScroll: 1,
+        dots: true,
         responsive: [
             {
                 breakpoint: 1150,
