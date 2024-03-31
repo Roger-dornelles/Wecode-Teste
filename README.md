@@ -1,10 +1,10 @@
 # Wecode-Teste
 
-https://wecode-teste.vercel.app/
+### Site :globe_with_meridians: https://wecode-teste.vercel.app/
 
-## Available Scripts
+## Instalação
 
-In the project directory, you can run:
+No prompt de comando digitar o comando 
 
 ### `npm start`
 
