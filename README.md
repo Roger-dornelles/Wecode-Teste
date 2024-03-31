@@ -20,3 +20,6 @@ npm install
 npm start
 ```
 
+### Teste
+
+- Para rodar os teste executar o comado Para rodar os testes e2e executar o comando :point_right: `npm run cy:run`
